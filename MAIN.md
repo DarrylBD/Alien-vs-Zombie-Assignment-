@@ -1,14 +1,8 @@
-# Part 2
-
 ## Video Demo
 
 Please provide the YouTube link to your [Video Demo](https://youtu.be/VUp5lVEKP1A).
 
 ## Minimum Requirements
-
-### Completed
-
-List all the features completed.
 
 1. The ability to change the game settings when booting up
 2. Generating a board depending on the size specified
@@ -25,12 +19,6 @@ List all the features completed.
 13. Pods Spawn and functionality
 14. Save File
 
-### To Do
-
-List all the features not yet done. Remove this section if there is no incomplete requirements.
-
-N/A
-
 ## Additional Features
 
 - Lowercase correction
@@ -39,28 +27,6 @@ N/A
 - Consumables can give the player a random amount of HP/ATK
 - Rocks have a chance to be empty, or contain a comsumable
 - Multiple Game Modes
-
-## Contributions
-
-### ############
-
-1. Advanced Game Settings
-2. Player Movement
-3. Player Trail
-4. Player Stats
-5. Rocks
-6. Health Pack
-7. Arrows
-8. Zombies
-9. Damage System
-10. Game Modes
-11. Pods
-12. Save System and Encryption
-
-### ######
-
-1. Board Generating
-2. Demo Recording
 
 ## Problems Encountered & Solutions
 
