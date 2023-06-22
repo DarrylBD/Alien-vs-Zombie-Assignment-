@@ -8,8 +8,8 @@
 using namespace std;
 namespace pf
 {
-    void encrypt(string filename, int key);
-    ifstream decrypt(string filename, int key);
+    void encrypt(string filename, int key, string dir);
+    ifstream decrypt(string filename, int key, string dir);
     void delete_file(string directory);
 }
 

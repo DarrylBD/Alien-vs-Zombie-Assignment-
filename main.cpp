@@ -12,12 +12,18 @@
 
 #include "headers/all_pf_headers.h"
 #include "headers/all_game_headers.h"
+
 #include <iostream>
+#include <cstdio>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string>
 #include <fstream>
+
+#include <sys/types.h>
+#include <sys/stat.h>
 using namespace std;
 
 Settings settings;
@@ -52,6 +58,7 @@ int PodNum;
 int HealthPackNum;
 int live_entities;
 string filetype = ".sav";
+string temp = "temp.tmp";
 
 struct timespec ts;
 
@@ -847,13 +854,14 @@ bool save_exist(string filename)
     return false;
 }
 
-void save()
+void save(string save_dir)
 {
     int index = 0;
     string filename;
     do
     {
-        filename = "save/Save";
+        filename = save_dir;
+        filename += "Save";
         filename += to_string(index);
         filename += filetype;
         index++;
@@ -948,19 +956,20 @@ void save()
     SaveFile << "End" << endl;
     
     SaveFile.close();
-    pf::encrypt(filename, key);
+    pf::encrypt(filename, key, temp);
 
     cout << "Save Successful" << endl;
     pf::Pause();
 }
 
-void load()
+void load(string save_dir)
 {
     int index = 0;
     string filename;
     do
     {
-        filename = "save/Save";
+        filename = save_dir;
+        filename += "Save";
         filename += to_string(index);
         filename += filetype;
         index++;
@@ -978,12 +987,13 @@ void load()
         return;
     }
     
-    filename = "save/Save";
+    filename = save_dir;
+    filename += "Save";
     filename += to_string(index);
     filename += filetype;
     int current_line = 0;
     int counter = 0;
-    ifstream SaveFile = pf::decrypt(filename, key);
+    ifstream SaveFile = pf::decrypt(filename, key, temp);
     string line_str;
     
     int PlayerHP, PlayerATK;
@@ -1211,6 +1221,8 @@ void load()
 
 int main()
 {
+    const char* save_dir = "alien-v-zombie-save/";
+    mkdir("alien-v-zombie-save/");
     clock_gettime(CLOCK_MONOTONIC, &ts);
     srand((time_t)ts.tv_nsec);
 
@@ -1264,11 +1276,12 @@ int main()
                 player_movement();
                 turn_no++;
             } else if (cmd == "save") {
-                save();
+                save(save_dir);
                 continue;
             } else if (cmd == "load")
             {
-                load();
+                load(save_dir);
+                remove(temp.c_str());
                 continue;
             } else if (cmd == "help") {
                 list();

@@ -5,14 +5,14 @@
 namespace pf
 {
     /* Encrypting and Decrypting files (Used Tech Edu's Encrypt and Decrypt tutorial as a baseline) */
-    void encrypt(string filename, int key)
+    void encrypt(string filename, int key, string dir)
     {
         fstream file;
         fstream temp;
-        string directory_temp = "save/temp.tmp";
         char char_;
+        
         file.open(filename, fstream::in);
-        temp.open(directory_temp, fstream::out);
+        temp.open(dir, fstream::out);
 
         if (!file)
         {
@@ -29,7 +29,7 @@ namespace pf
         temp.close();
 
         file.open(filename, fstream::out);
-        temp.open(directory_temp, fstream::in);
+        temp.open(dir, fstream::in);
 
         while (temp >> noskipws >> char_)
         {
@@ -38,19 +38,18 @@ namespace pf
 
         file.close();
         temp.close();
+        remove(dir.c_str());
     }
     
-    ifstream decrypt(string filename, int key)
+    ifstream decrypt(string filename, int key, string dir)
     {
         fstream file;
         fstream temp;
         ifstream ret;
-        
-        string directory_temp = "save/temp.tmp";
         char char_;
 
         file.open(filename, fstream::in);
-        temp.open(directory_temp, fstream::out);
+        temp.open(dir, fstream::out);
 
         while (file >> noskipws >> char_)
         {
@@ -61,7 +60,7 @@ namespace pf
         file.close();
         temp.close();
 
-        ret.open(directory_temp);
+        ret.open(dir);
         return ret;
     }
 }
