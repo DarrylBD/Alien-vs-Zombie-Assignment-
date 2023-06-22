@@ -1,1 +1,0 @@
-To run the game, you can just open compiler.cmd and it will automatically compile the code and run.

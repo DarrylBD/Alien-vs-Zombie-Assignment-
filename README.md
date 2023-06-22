@@ -1,3 +1,7 @@
+## How to Play
+
+To run the game, you can just open compiler.cmd and it will automatically compile the code and run.
+
 ## Video Demo
 
 Please provide the YouTube link to your (https://youtu.be/VUp5lVEKP1A).
