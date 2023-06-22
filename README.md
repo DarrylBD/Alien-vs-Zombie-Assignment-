@@ -1,6 +1,6 @@
 ## Video Demo
 
-Please provide the YouTube link to your (https://youtu.be/VUp5lVEKP1A).
+https://youtu.be/VUp5lVEKP1A
 
 ## Minimum Requirements
 
